@@ -1,4 +1,4 @@
-[ ![Download](https://api.bintray.com/packages/arasthel/maven/spannedgridlayoutmanager/images/download.svg) ](https://bintray.com/arasthel/maven/spannedgridlayoutmanager/_latestVersion) [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # SpannedGridLayoutManager
 
@@ -14,7 +14,7 @@ Gradle dependency:
 
 ```groovy
 dependencies {
-	implementation 'com.arasthel:spannedgridlayoutmanager:3.0.2'
+    implementation 'com.github.mensarb:SpannedGridLayoutManager:4.0.0'
 }
 ```
 
@@ -79,31 +79,6 @@ If you are fairly sure that the position of the items won't change much, you can
 ```kotlin
 spannedLayoutManager.itemOrderIsStable = true
 ```
-
-## Migrating from 1.X to 2.X
-
-Due to critical layout issues, the API for using SpanSizes had to change. The only changes you should have to do in your code are:
-
-```kotlin
-    val width = 1
-    val height = 2
-
-    // OLD
-    // holder.itemView.layoutParams = RecyclerView.LayoutParams(width, height)
-
-    // NEW
-    holder.itemView.layoutParams = SpanLayoutParams(SpanSize(width, height))
-```
-
-Just use the new `SpanLayoutParams` instead of generic `RecyclerView.LayoutParams`.
-
-## Migrating from 2.X to 3.X
-
-Sadly, due to more limitations of the initial design and bugs, most of the LayoutManager's layouting and recycling process had to be re-written. This depended on some breaking API changes since otherwise there would have been lots of unnecessary recycling of views and performance loss when the spans are calculated.
-
-Because of this, while you would set the *SpanSizes* using `SpanLayoutParams`, **these are no longer needed**. You can safely delete those from your adapter.
-
-Instead of that, you must use the `SpannedGridLayoutManager.SpanSizeLookup` like you would do with a `GridLayoutManager`. You can find more info on the [Usage section](#usage). 
 
 ## Animations
 
