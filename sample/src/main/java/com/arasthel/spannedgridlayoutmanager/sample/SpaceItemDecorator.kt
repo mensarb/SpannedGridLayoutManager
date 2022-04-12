@@ -1,8 +1,8 @@
 package com.arasthel.spannedgridlayoutmanager.sample
 
 import android.graphics.Rect
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Created by Jorge Martín on 2/6/17.
@@ -11,7 +11,7 @@ import android.view.View
 class SpaceItemDecorator(val left: Int,
                          val top: Int,
                          val right: Int,
-                         val bottom: Int): android.support.v7.widget.RecyclerView.ItemDecoration() {
+                         val bottom: Int): RecyclerView.ItemDecoration() {
 
 
     constructor(rect: android.graphics.Rect): this(rect.left, rect.top, rect.right, rect.bottom)

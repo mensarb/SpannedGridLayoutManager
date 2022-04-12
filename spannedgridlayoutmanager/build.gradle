@@ -1,62 +1,15 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'org.jetbrains.dokka-android'
-
-task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaAndroidTask) {
-    delete "$rootDir/docs"
-
-    outputFormat = 'html'
-    outputDirectory = "$rootDir/docs"
-
-    externalDocumentationLink {
-        url = new URL("https://developer.android.com/reference/")
-    }
-
-    includeNonPublic = false
-
-    // Always recreate documentation
-    outputs.upToDateWhen { return false }
-}
-
-afterEvaluate {
-    if (project.hasProperty("javadocJar")) {
-        tasks.javadocJar.dependsOn dokkaJavadoc
-    }
-}
-
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'spannedgridlayoutmanager'
-
-    publishedGroupId = 'com.arasthel'
-    libraryName = 'SpannedGridLayoutManager'
-    artifact = 'spannedgridlayoutmanager'
-
-    libraryDescription = 'A layout manager that will resize and reorder views based on a provided SpanSize.'
-
-    siteUrl = 'https://github.com/Arasthel/SpannedGridLayoutManager'
-    gitUrl = 'https://github.com/Arasthel/SpannedGridLayoutManager.git'
-
-    libraryVersion = '3.0.2'
-
-    developerId = 'Arasthel'
-    developerName = 'Jorge Martín Epsinosa'
-    developerEmail = 'jorgemartinespinosa@gmail.com'
-
-    licenseName = 'MIT'
-    licenseUrl = 'https://opensource.org/licenses/MIT'
-    allLicenses = ["MIT"]
-}
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion buildtools_version
+    compileSdkVersion 31
+    buildToolsVersion '32.0.0'
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 28
+        minSdkVersion 21
+        targetSdkVersion 31
         versionCode 1
-        versionName libraryVersion
+        versionName "1.0"
     }
     buildTypes {
         release {
@@ -71,10 +24,8 @@ tasks.withType(Javadoc) {
 }
 
 dependencies {
-    implementation "com.android.support:recyclerview-v7:$support_library_version"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-}
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
-// Bintray Upload
-apply from: '../gradle/tools/bintrayv1.gradle'
-apply from: '../gradle/tools/installv1.gradle'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.20'
+}

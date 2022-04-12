@@ -1,9 +1,9 @@
 package com.arasthel.spannedgridlayoutmanager.sample
 
 import android.graphics.Color
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Created by Jorge Martín on 24/5/17.
@@ -21,7 +21,8 @@ class GridItemAdapter: RecyclerView.Adapter<GridItemViewHolder>() {
         return position.toLong()
     }
 
-    val colors = arrayOf(Color.RED, Color.GREEN, Color.BLUE, Color.CYAN, Color.DKGRAY, Color.MAGENTA, Color.YELLOW)
+    private val colors = arrayOf(Color.parseColor("#9ADCFF"), Color.parseColor("#FFF89A"),
+            Color.parseColor("#FFB2A6"), Color.parseColor("#FF8AAE"))
 
     override fun onBindViewHolder(holder: GridItemViewHolder, position: Int) {
         (holder.itemView as? GridItemView)?.setTitle("$position")
