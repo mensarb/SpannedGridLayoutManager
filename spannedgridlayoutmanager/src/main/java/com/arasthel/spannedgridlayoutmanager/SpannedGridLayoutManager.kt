@@ -21,8 +21,12 @@ import androidx.recyclerview.widget.RecyclerView
  * @param orientation Whether the views will be layouted and scrolled in vertical or horizontal
  * @param spans How many spans does the layout have per row or column
  */
-open class SpannedGridLayoutManager(val orientation: Orientation,
-                               val spans: Int) : RecyclerView.LayoutManager() {
+open class SpannedGridLayoutManager(
+
+    val orientation: Orientation,
+    val spans: Int
+
+): RecyclerView.LayoutManager() {
 
     //==============================================================================================
     //  ~ Orientation & Direction enums
@@ -64,7 +68,10 @@ open class SpannedGridLayoutManager(val orientation: Orientation,
      * First visible position in layout - changes with recycling
      */
     open val firstVisiblePosition: Int get() {
-        if (childCount == 0) { return 0 }
+        if (childCount == 0) {
+            return 0
+        }
+
         return getPosition(getChildAt(0)!!)
     }
 
@@ -72,7 +79,10 @@ open class SpannedGridLayoutManager(val orientation: Orientation,
      * Last visible position in layout - changes with recycling
      */
     open val lastVisiblePosition: Int get() {
-        if (childCount == 0) { return 0 }
+        if (childCount == 0) {
+            return 0
+        }
+
         return getPosition(getChildAt(childCount-1)!!)
     }
 
